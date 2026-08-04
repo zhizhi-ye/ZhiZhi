@@ -456,6 +456,26 @@
     .sc-name { font-size: 14px; }
     .sc-price { font-size: 13px; }
   }
+  /* 天气徽章 */
+  .weather-badge { display:inline-flex; align-items:center; gap:4px; background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:3px 10px; font-size:12px; color:#0369a1; text-decoration:none; white-space:nowrap; margin-left:8px; }
+  .weather-badge:hover { background:#dbeafe; }
+  .weather-badge .w-icon { font-size:14px; }
+  .weather-badge .w-temp { font-weight:700; }
+  .weather-badge .w-desc { color:#64748b; }
+  .weather-badge .w-rain { color:#2563eb; }
+
+  /* 今日高亮 */
+  .day-card.is-today { box-shadow:0 0 0 3px #ef4444, 0 2px 12px rgba(239,68,68,0.25) !important; }
+  .day-card.is-today .day-header { background:linear-gradient(135deg, #dc2626, #ef4444) !important; }
+  .today-tag { background:#fff; color:#dc2626; border-radius:12px; padding:2px 10px; font-size:11px; font-weight:800; margin-left:8px; }
+
+  /* 过去的天 */
+  .day-card.is-past { opacity:0.5; }
+  .day-card.is-past .day-header { background:linear-gradient(135deg, #6b7280, #9ca3af) !important; }
+
+  /* 跳到今天按钮 */
+  .jump-today { position:fixed; bottom:20px; right:20px; background:#dc2626; color:#fff; border:none; border-radius:24px; padding:10px 18px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(220,38,38,0.4); z-index:999; display:flex; align-items:center; gap:6px; }
+  .jump-today:hover { background:#b91c1c; }
 </style>
 </head>
 <body>
@@ -591,12 +611,12 @@
     <div class="overview-card">
       <h3>🚗 自驾路段</h3>
       <ul>
-        <li><span class="oc-emoji">🚗</span> 斯塔万格↔布道台（40min×2）</li>
+        <li><span class="oc-emoji">🥾</span> 布道台跟团（Get Guided Norway·酒店接送）</li>
         <li><span class="oc-emoji">🚗</span> 斯塔万格→Eidfjord（含瀑布 · 240km · 4.5h）</li>
         <li><span class="oc-emoji">🚗</span> Eidfjord→卑尔根（含3景点 · 160km · 5-6h）</li>
         <li><span class="oc-emoji">🚗</span> 奥勒松→大洋之路→莫尔德（住莫尔德）</li>
-        <li><span class="oc-emoji">🔑</span> 租车① 斯塔万格取/卑尔根还（8/7-8/9）</li>
-        <li><span class="oc-emoji">🔑</span> 租车② 奥勒松取/机场还（8/15–16）</li>
+        <li><span class="oc-emoji">🔑</span> 租车① 斯塔万格取/卑尔根机场还（8/8-8/9·电动）</li>
+        <li><span class="oc-emoji">🔑</span> 租车② 莫尔德取还（8/15–16·待订）</li>
       </ul>
     </div>
   </div>
@@ -615,28 +635,28 @@
       <div class="hotel-city">奥斯陆</div>
       <div class="hotel-name">Radisson RED Oslo Airport</div>
       <div class="hotel-nights">1晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">¥1370</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">¥1441</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/6–8/8</div>
       <div class="hotel-city">斯塔万格</div>
       <div class="hotel-name">Clarion Hotel Air</div>
       <div class="hotel-nights">2晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£190.94</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£203.65</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/8–8/9</div>
       <div class="hotel-city">Eidfjord</div>
       <div class="hotel-name">Vøringfoss Hotel</div>
       <div class="hotel-nights">1晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£173.14</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£162.84</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/9–8/11</div>
       <div class="hotel-city">卑尔根</div>
       <div class="hotel-name">Scandic Ørnen</div>
       <div class="hotel-nights">2晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">¥2796</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£281.49</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/11–8/12</div>
@@ -650,28 +670,28 @@
       <div class="hotel-city">奥勒松</div>
       <div class="hotel-name">Scandic Parken</div>
       <div class="hotel-nights">3晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£651.30</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£613.75</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/15–8/16</div>
       <div class="hotel-city">莫尔德</div>
-      <div class="hotel-name">Scandic Seilet</div>
+      <div class="hotel-name">Molde Fjordhotell</div>
       <div class="hotel-nights">1晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£104.67</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£110.04</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;">
       <div class="hotel-dates">8/16–8/18</div>
       <div class="hotel-city">赫尔辛基</div>
-      <div class="hotel-name">Marski by Scandic</div>
+      <div class="hotel-name">Clarion Hotel Helsinki Airport</div>
       <div class="hotel-nights">2晚</div>
-      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">£254</div>
+      <div style="text-align:right;font-size:12px;color:#f59e0b;font-weight:600;">¥2134</div>
     </div>
     <div class="hotel-row" style="grid-template-columns:80px 1fr 1fr 60px 80px;background:#fff3cd;font-weight:700;">
       <div class="hotel-dates">小计</div>
       <div class="hotel-city">7城+邮轮 · 13晚</div>
       <div class="hotel-name">含早(邮轮另计) · 含邮轮夜</div>
       <div class="hotel-nights"></div>
-      <div style="text-align:right;font-size:13px;color:#b45309;font-weight:700;">¥22,993</div>
+      <div style="text-align:right;font-size:13px;color:#b45309;font-weight:700;">¥22,380</div>
     </div>
   </div>
   <div class="flight-table">
@@ -689,37 +709,37 @@
       <div class="flight-date">8/5</div>
       <div>
         <div class="flight-route">Zhi LHR → OSL</div>
-        <div class="flight-detail">SAS SK806 · 15:35出发 · 18:45落地 · 含托运 · 希思罗T2</div>
+        <div class="flight-detail">Norwegian · LGW 15:05→18:10 · 含托运 · ¥1296 · 携程 · 已订</div>
       </div>
-      <div class="flight-price">¥1467</div>
-      <span class="flight-status fs-pending">待订</span>
+      <div class="flight-price">¥1296</div>
+      <span class="flight-status fs-booked">已订</span>
     </div>
     <div class="flight-row">
       <div class="flight-date">8/6</div>
       <div>
         <div class="flight-route">OSL → SVG 奥斯陆→斯塔万格</div>
-        <div class="flight-detail">SAS · 20:20出发 · 21:15落地</div>
+        <div class="flight-detail">SAS SK4047 · 20:20出发 · 21:15落地 · 携程 · 托运23kg+手提8kg</div>
       </div>
-      <div class="flight-price">$122/人</div>
-      <span class="flight-status fs-pending">待订</span>
+      <div class="flight-price">¥1772/2人</div>
+      <span class="flight-status fs-booked">已订</span>
     </div>
     <div class="flight-row">
       <div class="flight-date">8/16</div>
       <div>
-        <div class="flight-route">AES → HEL 奥勒松→赫尔辛基</div>
+        <div class="flight-route">MOL→OSL→HEL 莫尔德→赫尔辛基</div>
         <div class="flight-detail">SAS · 14:45出发 · 经哥本哈根 · 20:25落地 · 含手提+1托运 · 携程</div>
       </div>
-      <div class="flight-price">¥1910/人</div>
-      <span class="flight-status fs-pending">待订</span>
+      <div class="flight-price">NOK 6,164/2人</div>
+      <span class="flight-status fs-booked">已订</span>
     </div>
     <div class="flight-row">
       <div class="flight-date">8/18</div>
       <div>
         <div class="flight-route">Zhi HEL → LHR</div>
-        <div class="flight-detail">BA6035 · 19:30出发 · 20:40落地 · 含登机箱+托运 · 希思罗T3</div>
+        <div class="flight-detail">中转经斯德哥尔摩 · 16:24→19:55 · ¥830 · 携程 · 已订</div>
       </div>
-      <div class="flight-price">¥1212</div>
-      <span class="flight-status fs-pending">待订</span>
+      <div class="flight-price">¥830</div>
+      <span class="flight-status fs-booked">已订</span>
     </div>
     <div class="flight-row">
       <div class="flight-date">8/18</div>
@@ -733,7 +753,7 @@
     <div class="flight-row" style="background:#fff3cd;font-weight:700;">
       <div class="flight-date">小计</div>
       <div><div class="flight-detail" style="color:#92400e;">含妈妈去程¥13674(回程算在别处) + Zhi往返 + 2人OSL→SVG + 2人AES→HEL</div></div>
-      <div class="flight-price" style="color:#b45309;">¥21,849</div>
+      <div class="flight-price" style="color:#b45309;">¥21,702</div>
       <span></span>
     </div>
   </div>
@@ -742,27 +762,27 @@
   <div class="flight-table">
     <div class="booked-header">🚗 租车总览</div>
     <div class="flight-row">
-      <div class="flight-date">8/7–8/9</div>
+      <div class="flight-date">8/8–8/9</div>
       <div>
-        <div class="flight-route">租车① 斯塔万格机场取 / Bergen Centrum还</div>
-        <div class="flight-detail">Toyota Corolla Cross 4x4(中型SUV) · 8/7 8:00取 · 8/9 20:00还 · 无限里程 · 含单程费+保险 · 价格回伦敦再定</div>
+        <div class="flight-route">租车① 斯塔万格机场取 / Bergen Flesland机场还</div>
+        <div class="flight-detail">Sixt Volvo EX40 4WD(电动SUV) · 8/8 8:00取 · 8/9 21:00还 · 无限里程 · 全含保险无excess · Stay flexible取车前免费取消 · 已订</div>
       </div>
-      <div class="flight-price">$1169</div>
-      <span class="flight-status fs-pending">待订</span>
+      <div class="flight-price">NOK 8,594.69</div>
+      <span class="flight-status fs-booked">已订</span>
     </div>
     <div class="flight-row">
       <div class="flight-date">8/15–16</div>
       <div>
-        <div class="flight-route">租车② 奥勒松取 / 奥勒松机场还</div>
-        <div class="flight-detail">Avis Volvo XC60 燃油SUV · 8/15取-8/16还(过夜·住莫尔德) · 无限里程 · 含保护 · 评分9.9</div>
+        <div class="flight-route">租车② 莫尔德取还(待订)</div>
+        <div class="flight-detail">莫尔德取还 · 8/15取-8/16还 · 待订(原Avis £130.81已取消)</div>
       </div>
-      <div class="flight-price">$401.99</div>
+      <div class="flight-price">待订</div>
       <span class="flight-status fs-pending">待订</span>
     </div>
     <div class="flight-row" style="background:#fff3cd;font-weight:700;">
       <div class="flight-date">小计</div>
-      <div><div class="flight-detail" style="color:#92400e;">租车①¥8,417(含保险) + 租车②¥2,894</div></div>
-      <div class="flight-price" style="color:#b45309;">¥11,311</div>
+      <div><div class="flight-detail" style="color:#92400e;">租车①Volvo电动¥5,758 + 租车②莫尔德(待订)</div></div>
+      <div class="flight-price" style="color:#b45309;">¥6,975</div>
       <span></span>
     </div>
   </div>
@@ -772,38 +792,38 @@
     <div class="booked-header">💰 费用总览（2人 · 折合RMB · 汇率约£1=¥9.3 / $1=¥7.2 / NOK1=¥0.67）</div>
     <div class="flight-row">
       <div class="flight-date">🏨 住宿</div>
-      <div><div class="flight-detail">7城13晚 + Hurtigruten邮轮夜(¥6,048)</div></div>
-      <div class="flight-price">¥22,993</div>
+      <div><div class="flight-detail">7城13晚 + Hurtigruten邮轮夜(¥22,380)</div></div>
+      <div class="flight-price">¥22,380</div>
       <span></span>
     </div>
     <div class="flight-row">
       <div class="flight-date">🚗 租车</div>
-      <div><div class="flight-detail">租车①Toyota ¥8,417(含保险·回伦敦再定) + 租车②Volvo ¥2,894</div></div>
-      <div class="flight-price">¥11,311</div>
+      <div><div class="flight-detail">租车①Volvo电动¥5,758 + 租车②莫尔德(待订)</div></div>
+      <div class="flight-price">¥6,975</div>
       <span></span>
     </div>
     <div class="flight-row">
       <div class="flight-date">✈️ 机票</div>
-      <div><div class="flight-detail">含妈妈去程¥13674(回程算在别处) + Zhi往返 + OSL→SVG + AES→HEL</div></div>
-      <div class="flight-price">¥21,849</div>
+      <div><div class="flight-detail">含妈妈去程¥13674 + Zhi往返¥2126 + OSL→SVG¥1772 + MOL→HEL NOK6164(经OSL) · 🔙SAS退款£496待到账</div></div>
+      <div class="flight-price">¥21,702</div>
       <span></span>
     </div>
     <div class="flight-row">
       <div class="flight-date">🎟️ Tour</div>
-      <div><div class="flight-detail">精灵之路团¥2,222 + 盖朗厄尔老鹰之路团¥2,729</div></div>
-      <div class="flight-price">¥4,951</div>
+      <div><div class="flight-detail">布道台团¥2,219 + 精灵之路团¥2,222 + 盖朗厄尔老鹰之路团¥2,629</div></div>
+      <div class="flight-price">¥7,070</div>
       <span></span>
     </div>
     <div class="flight-row">
       <div class="flight-date">🚂 缩影</div>
-      <div><div class="flight-detail">挪威缩影 火车+大巴+游船(NOK4,676·2人)</div></div>
-      <div class="flight-price">¥3,133</div>
+      <div><div class="flight-detail">挪威缩影 火车+大巴+游船(NOK4,120·2人)</div></div>
+      <div class="flight-price">¥2,760</div>
       <span></span>
     </div>
     <div class="flight-row" style="background:#fff3cd;font-weight:700;">
       <div class="flight-date">合计</div>
       <div><div class="flight-detail" style="color:#92400e;">不含:油费、过路费、渡轮费、餐饮、门票、市内交通</div></div>
-      <div class="flight-price" style="color:#b45309;font-size:15px;">¥64,237</div>
+      <div class="flight-price" style="color:#b45309;font-size:15px;">¥61,374</div>
       <span></span>
     </div>
   </div>
@@ -816,7 +836,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">5</div>
+        <div class="date" data-date="8/5">5</div>
         <div class="weekday">周三</div>
       </div>
       <div class="day-title-area">
@@ -839,11 +859,11 @@
         <div class="transport-card">
           <div class="tc-icon">✈️</div>
           <div class="tc-body">
-            <div class="tc-times">15:35 <span class="tc-arrow">→</span> 18:45</div>
-            <div class="tc-meta"><span class="tc-route">Zhi · LHR 伦敦 → OSL 奥斯陆</span> · SAS SK806 · 2h10m · 直达 · 希思罗T2</div>
+            <div class="tc-times">15:05 <span class="tc-arrow">→</span> 18:10</div>
+            <div class="tc-meta"><span class="tc-route">Zhi · LGW 伦敦 → OSL 奥斯陆</span> · Norwegian · 3h05m · 直达 · Gatwick</div>
           </div>
           <div class="tc-right">
-            <span class="badge badge-pending">待订</span>
+            <span class="badge badge-booked">已订 ¥1296</span>
           </div>
         </div>
         <div class="timeline-item">
@@ -861,8 +881,8 @@
           <div class="sc-meta">携程 · 1晚 · 含早餐 · 退房12:00 · 连廊步行到航站楼</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">¥1370</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">¥1441.42</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -872,7 +892,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">6</div>
+        <div class="date" data-date="8/6">6</div>
         <div class="weekday">周四</div>
       </div>
       <div class="day-title-area">
@@ -937,8 +957,8 @@
             <div class="tc-meta"><span class="tc-route">OSL 奥斯陆 → SVG 斯塔万格</span> · 北欧航空 SK4047 · 55分钟 · 直达 · 托运23kg+手提8kg</div>
           </div>
           <div class="tc-right">
-            <div class="tc-price">¥838/人</div>
-            <span class="badge badge-pending">待订 · 2人</span>
+            <div class="tc-price">¥1772/2人</div>
+            <span class="badge badge-booked">已订 · 携程</span>
           </div>
         </div>
       </div>
@@ -949,8 +969,8 @@
           <div class="sc-meta">Expedia · 2晚 · 含早餐 · 退房12:00</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">£190.94</div>
-          <span class="badge badge-pending">待订 · 2晚</span>
+          <div class="sc-price">£203.65</div>
+          <span class="badge badge-booked">已订 · 2晚</span>
         </div>
       </div>
     </div>
@@ -966,58 +986,38 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">7</div>
+        <div class="date" data-date="8/7">7</div>
         <div class="weekday">周五</div>
       </div>
       <div class="day-title-area">
         <div class="day-location">斯塔万格 STAVANGER</div>
-        <div class="day-title">取车 · 布道台徒步</div>
+        <div class="day-title">布道台跟团(酒店接送)</div>
       </div>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-icon">🔑</div>
-          <div class="timeline-time">09:30</div>
+          <div class="timeline-icon">🚐</div>
+          <div class="timeline-time">10:00</div>
           <div class="timeline-content">
-            <div class="timeline-main">斯塔万格机场取租车① · Toyota Corolla Cross 4x4 <span class="badge badge-pending">待订 $1169(含保险)</span></div>
-            <div class="timeline-sub">从Clarion Hotel Air步行10分钟到航站楼取车 · 中型SUV · 无限里程 · 8/9 20:00 Bergen Centrum还(含单程费)</div>
-            <div class="timeline-sub"><span class="hl">⚠️ 取车时和租车公司确认过路费/渡轮怎么收:是公司代扣(有无管理费)还是需自己上epass24.com按车牌付 · 避免重复付</span></div>
-          </div>
-        </div>
-        <div class="transport-card">
-          <div class="tc-icon">🚗</div>
-          <div class="tc-body">
-            <div class="tc-times">10:00 <span class="tc-arrow">→</span> 10:40</div>
-            <div class="tc-meta"><span class="tc-route">Clarion Hotel Air → 布道台停车场</span> · 约40分钟 · 经Ryfast海底隧道(无渡轮)直达</div>
-          </div>
-          <div class="tc-right">
-            <div class="tc-price">隧道约160 NOK/单程</div>
-            <span class="badge badge-info">租车公司代扣</span>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-icon">🅿️</div>
-          <div class="timeline-time">10:40</div>
-          <div class="timeline-content">
-            <div class="timeline-main">布道台 BaseCamp 停车 <span class="badge badge-info">停车约250 NOK · 刷卡/app · 下山后付</span></div>
-            <div class="timeline-sub">旺季车位会满 · 早到更稳妥</div>
+            <div class="timeline-main">Get Guided Norway 上门接 · Clarion Hotel Air <span class="badge badge-booked">已订 NOK 3,311(含接送)</span></div>
+            <div class="timeline-sub">酒店门口上车(含Clarion Hotel Air接送+NOK500) · 白色Opel Vivaro电动车 · 最多8人小团 · 经世界最深海底隧道到布道台停车场 · 8/7当天不取车(不产生Clarion停车费),轻松跟团·妈妈车上可补觉</div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">🥾</div>
-          <div class="timeline-time">全天</div>
+          <div class="timeline-time">上午-下午</div>
           <div class="timeline-content">
-            <div class="timeline-main">布道台 Preikestolen 徒步</div>
-            <div class="timeline-sub">来回8km · 爬升330m · 约4-5小时 · 604米悬崖俯瞰吕瑟峡湾</div>
+            <div class="timeline-main">布道台 Preikestolen 徒步(向导带队)</div>
+            <div class="timeline-sub">来回8km · 爬升330m · 约2.5小时上山 · 604米悬崖俯瞰吕瑟峡湾 · 含向导+挪威零食 · 顶上午饭(自带)</div>
             <details class="spot">
               <summary>布道台 Preikestolen</summary>
               <div class="spot-body">
-                挪威最著名的徒步目的地之一,一块约25×25米的天然方形巨石平台,垂直耸立在吕瑟峡湾(Lysefjord)上方604米。岩台是约1万年前冰川时期岩石沿裂缝崩裂形成的。徒步往返约8公里、爬升330米,沿途经过岩石坡、木栈道和高山湖,约4-5小时。山顶没有护栏,景观震撼但需注意安全,尤其雨天石面湿滑。8月是最佳季节,但游客多,建议早出发避开人潮。
+                挪威最著名的徒步目的地之一,一块约25×25米的天然方形巨石平台,垂直耸立在吕瑟峡湾(Lysefjord)上方604米。岩台是约1万年前冰川时期岩石沿裂缝崩裂形成的。徒步往返约8公里、爬升330米,沿途经过岩石坡、木栈道和高山湖。有向导带队更省心、有讲解、帮拍照,还可能走避开人群的小径。山顶没有护栏,注意安全。8月是最佳季节。
                 <div class="spot-tags">
                   <span class="spot-tag">🥾 中等强度徒步</span>
                   <span class="spot-tag">📸 必看景观</span>
-                  <span class="spot-tag">⏱️ 4-5小时</span>
+                  <span class="spot-tag">🧑‍🏫 向导带队</span>
                   <span class="spot-tag">⚠️ 无护栏·防滑</span>
                   <span class="spot-tag">☀️ 夏季最佳</span>
                 </div>
@@ -1025,20 +1025,18 @@
             </details>
           </div>
         </div>
-        <div class="transport-card">
-          <div class="tc-icon">🚗</div>
-          <div class="tc-body">
-            <div class="tc-times">16:00 <span class="tc-arrow">→</span> 16:40</div>
-            <div class="tc-meta"><span class="tc-route">布道台停车场 → 斯塔万格</span> · 约40分钟 · 经Ryfast隧道 · 顺路逛Gamle Stavanger老城</div>
-          </div>
-          <div class="tc-right">
-            <div class="tc-price">隧道约160 NOK/单程</div>
-            <span class="badge badge-info">租车公司代扣</span>
+        <div class="timeline-item">
+          <div class="timeline-icon">🚐</div>
+          <div class="timeline-time">约17:00</div>
+          <div class="timeline-content">
+            <div class="timeline-main">送回 Clarion Hotel Air</div>
+            <div class="timeline-sub">约下午5点回到酒店 · 当天休息,明早取车开长途去Eidfjord</div>
           </div>
         </div>
       </div>
       <div class="tags">
-        <span class="tag tag-pending">⚠️ 租车①待订 · Toyota Corolla Cross 4x4 · $1169含保险(价格回伦敦再定 · 斯塔万格机场取/Bergen Centrum还)</span>
+        <span class="tag tag-booked">🥾 布道台团已订 · Get Guided Norway · NOK 3,311.44(2人·含Clarion接送) · 24h免费取消</span>
+        <span class="tag tag-info">🔑 8/7不用车 · 租车①8/8斯塔万格机场取/8/9卑尔根Flesland机场还</span>
       </div>
       <div class="stay-card">
         <div class="sc-icon">🏨</div>
@@ -1063,7 +1061,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">8</div>
+        <div class="date" data-date="8/8">8</div>
         <div class="weekday">周六</div>
       </div>
       <div class="day-title-area">
@@ -1073,6 +1071,17 @@
     </div>
     <div class="day-body">
       <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">🔑</div>
+          <div class="timeline-time">08:30</div>
+          <div class="timeline-content">
+            <div class="timeline-main">斯塔万格Sola机场取租车① · Sixt Volvo EX40 4WD(电动) <span class="badge badge-booked">已订 NOK 8,594.69</span></div>
+            <div class="timeline-sub">从Clarion Hotel Air步行10分钟到航站楼取车 · 电动4驱SUV · 无限里程 · 全含保险无excess · 8/9 21:00 Bergen Flesland机场还 · 取车前免费取消 · 昨天跟团没用车,今天才取</div>
+            <div class="timeline-sub"><span class="hl">⚡ 电动车充电:用ABRP规划整天路线(算海拔+天气) <a href="https://abetterrouteplanner.com/" target="_blank" style="color:#2563eb;">abetterrouteplanner.com↗</a> · Odda午饭时充电(补给+午饭+充电一次搞定) · 渡轮码头也有桩 · 电车坐渡轮半价 · CCS快充口 · 备2种支付方式</div>
+            <div class="timeline-sub"><span class="hl">⚠️ 取车时和租车公司确认过路费/渡轮怎么收:公司代扣(有无管理费)还是自己上epass24.com按车牌付 · 避免重复付</span></div>
+            <div class="timeline-sub"><span class="hl">📋 驾照要求:中国驾照原件 + Sixt官方翻译认证件(sixt.com.cn办) + 护照 + 信用卡 · 驾照需持有≥2年 · 携程翻译件可作备份</span></div>
+          </div>
+        </div>
         <div class="transport-card">
           <div class="tc-icon">🚗</div>
           <div class="tc-body">
@@ -1187,8 +1196,8 @@
           <div class="sc-meta">Expedia · 1晚 · 含早餐 · 临哈当厄尔峡湾 · 8/9一早上去看Vøringsfossen顺路</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">£173.14</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">£162.84</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1198,7 +1207,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">9</div>
+        <div class="date" data-date="8/9">9</div>
         <div class="weekday">周日</div>
       </div>
       <div class="day-title-area">
@@ -1351,26 +1360,27 @@
             <div class="tc-meta"><span class="tc-route">Steinsdalsfossen → 卑尔根</span> · Rv7→E16</div>
           </div>
           <div class="tc-right">
-            <span class="badge badge-pending">还车/酒店待订</span>
+            <span class="badge badge-booked">已订</span>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">🔑</div>
           <div class="timeline-time">约15:30</div>
           <div class="timeline-content">
-            <div class="timeline-main">抵达卑尔根 · 还租车①(Bergen Centrum Self Service自助还车) · check in酒店 <span class="badge badge-pending">酒店待订</span></div>
+            <div class="timeline-main">抵达卑尔根 · 还租车①(Bergen Flesland机场·21:00前还·电量留意) · 打车/巴士到市区入住Scandic Ørnen</div>
+            <div class="timeline-sub">Flesland机场离市中心约20分钟 · 机场巴士Flybussen或打车到Scandic Ørnen · 还车前留意电量(Sixt还车电量要求) · 机场有充电桩</div>
           </div>
         </div>
       </div>
       <div class="stay-card">
         <div class="sc-icon">🏨</div>
         <div class="sc-body">
-          <div class="sc-name">Scandic Ørnen（卑尔根 · 2晚）</div>
-          <div class="sc-meta">携程 · 含早餐 · 市中心 · 离火车站/巴士站很近(8/10一早赶07:04 R40方便) · 走路10分钟到鱼市 · Expedia比价£312.87</div>
+          <div class="sc-name">Scandic Ørnen（卑尔根 · 2晚 · 不含早）</div>
+          <div class="sc-meta">Expedia · 携程 · 含早餐 · 市中心 · 离火车站/巴士站很近(8/10一早赶07:04 R40方便) · 走路10分钟到鱼市 · Expedia比价£312.87</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">¥2796</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">£281.49</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1384,7 +1394,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">10</div>
+        <div class="date" data-date="8/10">10</div>
         <div class="weekday">周一</div>
       </div>
       <div class="day-title-area">
@@ -1401,8 +1411,8 @@
             <div class="tc-meta"><span class="tc-route">卑尔根 → 沃斯 Voss</span> · R40火车 · 卑尔根中央火车站发车(市中心·挨巴士站) · 提前到看屏幕确认站台</div>
           </div>
           <div class="tc-right">
-            <div class="tc-price">NOK 1,112/2人</div>
-            <span class="badge badge-pending">待订 vy.no</span>
+            <div class="tc-price">NOK 556/2人</div>
+            <span class="badge badge-booked">已订 vy.no</span>
           </div>
         </div>
         <div class="timeline-item">
@@ -1432,7 +1442,7 @@
           </div>
           <div class="tc-right">
             <div class="tc-price">NOK 400/2人</div>
-            <span class="badge badge-pending">待订 norwaysbest.com</span>
+            <span class="badge badge-booked">已订 norwaysbest</span>
           </div>
         </div>
         <div class="timeline-item">
@@ -1462,7 +1472,7 @@
           </div>
           <div class="tc-right">
             <div class="tc-price">NOK 1,330/2人</div>
-            <span class="badge badge-pending">待订 norwaysbest.com</span>
+            <span class="badge badge-booked">已订 norwaysbest</span>
           </div>
         </div>
         <div class="timeline-item">
@@ -1510,14 +1520,14 @@
           </div>
           <div class="tc-right">
             <div class="tc-price">NOK 1,834/2人</div>
-            <span class="badge badge-pending">待订 vy.no</span>
+            <span class="badge badge-booked">已订 vy.no</span>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">⏱️</div>
           <div class="timeline-time">全天</div>
           <div class="timeline-content">
-            <div class="timeline-sub">⚠️ 挪威缩影各段时刻为固定衔接班次,环环相扣不能误点 · 总价约NOK 4,676 ≈ $425(2人) · 旺季务必提前在vy.no订火车、付清购物车的大巴和游船</div>
+            <div class="timeline-sub">⚠️ 挪威缩影各段时刻为固定衔接班次,环环相扣不能误点 · 总价约NOK 4,120 ≈ $375(2人) · 四段已订 · 旺季务必提前在vy.no订火车、付清购物车的大巴和游船</div>
           </div>
         </div>
       </div>
@@ -1528,7 +1538,7 @@
           <div class="sc-meta">第2晚 · 市中心 · 含早</div>
         </div>
         <div class="sc-right">
-          <span class="badge badge-pending">待订</span>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1538,7 +1548,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">11</div>
+        <div class="date" data-date="8/11">11</div>
         <div class="weekday">周二</div>
       </div>
       <div class="day-title-area">
@@ -1677,7 +1687,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">12</div>
+        <div class="date" data-date="8/12">12</div>
         <div class="weekday">周三</div>
       </div>
       <div class="day-title-area">
@@ -1733,8 +1743,8 @@
           <div class="sc-meta">8/12–8/15 · Storgata 16 · 市中心 · 含早 · Superior Twin · Expedia评分8.6 · 携程比价¥6346</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">£651.30</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">£613.75</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1744,7 +1754,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">13</div>
+        <div class="date" data-date="8/13">13</div>
         <div class="weekday">周四</div>
       </div>
       <div class="day-title-area">
@@ -1759,7 +1769,9 @@
           <div class="timeline-time">08:30</div>
           <div class="timeline-content">
             <div class="timeline-main">Trollstigen + 罗姆斯达尔阿尔卑斯一日团出发 <span class="badge badge-booked">已订 £238.88</span></div>
-            <div class="timeline-sub">Viator · 约7小时 · 11个发卡弯山路</div>
+            <div class="timeline-sub">运营商 Travel North(travelnorth.com) · 约7小时 · 11个发卡弯山路</div>
+            <div class="timeline-sub"><span class="hl">📍集合点:Skateflukaia 码头(去Hareid快艇/Valderøya渡轮同一处) · 向导穿蓝夹克+TRAVEL NORTH工牌 · 8:30发车·发车前30分钟到(8:00到) · 24h免费取消</span></div>
+            <div class="timeline-sub"><span class="hl">⚠️ Trollstigen是老山路,可能因落石/塌方/天气临时封路 · 出发前一天查天气+路况,不好可用免费取消</span></div>
           </div>
         </div>
         <div class="timeline-item">
@@ -1800,7 +1812,7 @@
           <div class="sc-meta">第2晚 · 市中心 · 含早</div>
         </div>
         <div class="sc-right">
-          <span class="badge badge-pending">待订</span>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1810,7 +1822,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">14</div>
+        <div class="date" data-date="8/14">14</div>
         <div class="weekday">周五</div>
       </div>
       <div class="day-title-area">
@@ -1824,15 +1836,15 @@
           <div class="timeline-icon">🚢</div>
           <div class="timeline-time">09:00</div>
           <div class="timeline-content">
-            <div class="timeline-main">奥勒松邮轮码头出发 · 找黑白船MS Bruvik</div>
-            <div class="timeline-sub">提前15分钟到 · 订单号GYG32L5RX6YZ</div>
+            <div class="timeline-main">盖朗厄尔+老鹰之路团出发 · 找黑白船 MS Bruvik</div>
+            <div class="timeline-sub"><span class="hl">📍集合点:Rådhuskaia 码头(奥勒松Cruise Pier Gate外·市中心) · 找黑白色的船 MS Bruvik</span> · <strong>8:45前到达</strong>(团9:00出发·提前15分钟·否则失去名额) · 订单号GYG32L5RX6YZ</div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">🏔️</div>
           <div class="timeline-time">全天</div>
           <div class="timeline-content">
-            <div class="timeline-main">盖朗厄尔峡湾游船（约2小时）· 老鹰之路Ørnesvingen <span class="badge badge-booked">已订 $379.04 · GYG32L5RX6YZ</span></div>
+            <div class="timeline-main">盖朗厄尔峡湾游船（约2小时）· 老鹰之路Ørnesvingen <span class="badge badge-booked">已订 £282.68 · GYG32L5RX6YZ</span></div>
             <div class="timeline-sub">GetYourGuide · 约10.5小时</div>
             <details class="spot">
               <summary>盖朗厄尔峡湾游船 Geirangerfjord Cruise</summary>
@@ -1866,7 +1878,7 @@
           <div class="sc-meta">第3晚 · 市中心 · 含早</div>
         </div>
         <div class="sc-right">
-          <span class="badge badge-pending">待订</span>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1876,30 +1888,38 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">15</div>
+        <div class="date" data-date="8/15">15</div>
         <div class="weekday">周六</div>
       </div>
       <div class="day-title-area">
-        <div class="day-location">奥勒松 ÅLESUND → 大洋之路 → 莫尔德 MOLDE</div>
-        <div class="day-title">大洋之路自驾 · 住莫尔德</div>
+        <div class="day-location">奥勒松 ÅLESUND → 莫尔德 MOLDE → 大洋之路</div>
+        <div class="day-title">船去莫尔德 · 租车 · 大洋之路</div>
       </div>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-icon">🔑</div>
+          <div class="timeline-icon">🚢</div>
           <div class="timeline-time">10:00</div>
           <div class="timeline-content">
-            <div class="timeline-main">取租车② · Avis Volvo XC60（燃油SUV） <span class="badge badge-pending">待订 $401.99</span></div>
-            <div class="timeline-sub">奥勒松市中心取车(住Scandic Parken走过去) · 10:00取出发 · 大洋之路→住莫尔德→8/16 Vigra机场还 · 含保护 · 无限里程 · 评分9.9 · 48h免费取消</div>
-            <div class="timeline-sub"><span class="hl">🔑 市区取/机场还,异地费仅比市区取还($373)多约$29,很划算 · 下单确认日期为8/15取–8/16还(跨夜)</span></div>
+            <div class="timeline-main">Hurtigruten 奥勒松→莫尔德 <span class="badge badge-pending">待订 €29/人×2=€58</span></div>
+            <div class="timeline-sub">Ålesund kystrutekai 上船 · 35分钟直达 · 10:35到Molde kystrutekai · 比巴士(2h27m)快近2小时</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">🔑</div>
+          <div class="timeline-time">11:00</div>
+          <div class="timeline-content">
+            <div class="timeline-main">莫尔德取租车② <span class="badge badge-pending">待订·莫尔德取还</span></div>
+            <div class="timeline-sub">到达后取车(莫尔德市区/机场,待确认) · 大洋之路自驾 · 8/16 MOL机场还车后飞走</div>
+            <div class="timeline-sub"><span class="hl">📋 驾照:中国驾照原件 + 翻译件 + 护照 + 信用卡</span></div>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">🌊</div>
-          <div class="timeline-time">10:00</div>
+          <div class="timeline-time">11:30</div>
           <div class="timeline-content">
-            <div class="timeline-main">大洋之路 Atlanterhavsveien 自驾（10:00出发 · 约1.5小时）</div>
+            <div class="timeline-main">大洋之路 Atlanterhavsveien 自驾（11:30出发 · 约1.5小时）</div>
             <div class="timeline-sub">被评为"世纪建筑工程" · 跨越多个小岛和海湾 · Storseisundet大桥最出片 · 沿途多个观景停车点</div>
             <details class="spot">
               <summary>大洋之路 Atlanterhavsveien</summary>
@@ -1957,12 +1977,12 @@
       <div class="stay-card">
         <div class="sc-icon">🏨</div>
         <div class="sc-body">
-          <div class="sc-name">Scandic Seilet（莫尔德 · 1晚）</div>
+          <div class="sc-name">Molde Fjordhotell（莫尔德 · 1晚）</div>
           <div class="sc-meta">8/15 · Gideonvegen 2 · 帆船造型地标 · 峡湾景 · 有Spa · 含早 · 评分8.4 · 现场停车NOK180/天(车位充足省心)</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">£104.67</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">£110.04</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -1978,60 +1998,72 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">16</div>
+        <div class="date" data-date="8/16">16</div>
         <div class="weekday">周日</div>
       </div>
       <div class="day-title-area">
-        <div class="day-location">莫尔德 MOLDE → 奥勒松机场 → 赫尔辛基 HELSINKI</div>
-        <div class="day-title">开回奥勒松 · 飞赫尔辛基</div>
+        <div class="day-location">莫尔德 MOLDE → 奥斯陆 → 赫尔辛基 HELSINKI</div>
+        <div class="day-title">莫尔德飞赫尔辛基(经奥斯陆)</div>
       </div>
     </div>
     <div class="day-body">
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-icon">🚗</div>
-          <div class="timeline-time">约09:30</div>
-          <div class="timeline-content">
-            <div class="timeline-main">莫尔德退房 → 开回奥勒松机场(AES)</div>
-            <div class="timeline-sub">约1.5小时+Molde-Vestnes渡轮(约36分钟·班次频繁·<strong>无需预订,到码头排队上船</strong>·AutoPASS按车牌自动计费,租车公司事后扣) · <span class="hl">14:45航班,务必预留:还车+过渡轮+提前2小时到机场 · 早上9:30前出发稳妥</span></div>
-          </div>
-        </div>
-        <div class="timeline-item">
           <div class="timeline-icon">🔑</div>
-          <div class="timeline-time">约11:30</div>
+          <div class="timeline-time">上午</div>
           <div class="timeline-content">
-            <div class="timeline-main">奥勒松机场还租车②</div>
-            <div class="timeline-sub">在AES机场或附近Avis点还车 · 重订时把还车点设为奥勒松机场</div>
+            <div class="timeline-main">莫尔德退房 · 还车 · 去MOL机场</div>
+            <div class="timeline-sub">还车拍照(四面+划痕+油量表) · MOL机场离市区5分钟 · 提前2小时到机场</div>
           </div>
         </div>
         <div class="transport-card">
           <div class="tc-icon">✈️</div>
           <div class="tc-body">
-            <div class="tc-times">14:45 <span class="tc-arrow">→</span> 20:25</div>
-            <div class="tc-meta"><span class="tc-route">AES 奥勒松 → HEL 赫尔辛基</span> · 北欧航空 SAS · 经哥本哈根中转 · 含手提+1件托运</div>
+            <div class="tc-times">15:10 <span class="tc-arrow">→</span> 16:05</div>
+            <div class="tc-meta"><span class="tc-route">MOL 莫尔德 → OSL 奥斯陆</span> · Norwegian DY423 · 直飞55分钟</div>
           </div>
           <div class="tc-right">
-            <div class="tc-price">¥1910/人</div>
-            <span class="badge badge-pending">待订 · 2人 · 携程</span>
+            <div class="tc-price">NOK 2,380/2人</div>
+            <span class="badge badge-booked">已订 · Norwegian官网</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">⏳</div>
+          <div class="timeline-time">16:05-20:30</div>
+          <div class="timeline-content">
+            <div class="timeline-main">奥斯陆OSL机场转机 · 4h25m</div>
+            <div class="timeline-sub">⚠️ 两张独立票(Norwegian+Finnair) · 要提行李重新托运 · 重新过安检 · 4h25m很充裕</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div class="tc-icon">✈️</div>
+          <div class="tc-body">
+            <div class="tc-times">20:30 <span class="tc-arrow">→</span> 22:55</div>
+            <div class="tc-meta"><span class="tc-route">OSL 奥斯陆 → HEL 赫尔辛基</span> · Finnair AY918 · 直飞1h25m(+1h时差)</div>
+          </div>
+          <div class="tc-right">
+            <div class="tc-price">NOK 3,784/2人</div>
+            <span class="badge badge-booked">已订 · Finnair官网</span>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-icon">🛬</div>
-          <div class="timeline-time">20:25</div>
+          <div class="timeline-time">22:55</div>
           <div class="timeline-content">
-            <div class="timeline-main">赫尔辛基HEL落地 · 坐机场快线(I/P线)约30分钟到中央车站 · 入住</div>
+            <div class="timeline-main">赫尔辛基HEL落地 · Clarion Hotel Helsinki Airport(机场直达)</div>
+            <div class="timeline-sub">机场酒店,室内通道直达,深夜到也方便</div>
           </div>
         </div>
       </div>
       <div class="stay-card">
         <div class="sc-icon">🏨</div>
         <div class="sc-body">
-          <div class="sc-name">Marski by Scandic（赫尔辛基 · 2晚）</div>
-          <div class="sc-meta">8/16–8/18 · 离中央车站300米(步行7分钟·8/18回机场方便) · 含早 · 🧖 免费桑拿16:00-23:00 · 可选房内私人桑拿房型</div>
+          <div class="sc-name">Clarion Hotel Helsinki Airport（赫尔辛基机场 · 2晚 · 含早）</div>
+          <div class="sc-meta">8/16–8/18 · 机场酒店·室内通道直达航站楼 · 含早 · 🧖 Elements Spa(桑拿+蒸汽房+户外按摩池·€12/人) · 携程¥2134</div>
         </div>
         <div class="sc-right">
-          <div class="sc-price">£254</div>
-          <span class="badge badge-pending">待订</span>
+          <div class="sc-price">¥2134</div>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -2041,7 +2073,7 @@
     <div class="day-header">
       <div class="day-date">
         <div class="month">AUG</div>
-        <div class="date">17</div>
+        <div class="date" data-date="8/17">17</div>
         <div class="weekday">周一</div>
       </div>
       <div class="day-title-area">
@@ -2141,11 +2173,11 @@
       <div class="stay-card">
         <div class="sc-icon">🏨</div>
         <div class="sc-body">
-          <div class="sc-name">Marski by Scandic（赫尔辛基）</div>
+          <div class="sc-name">Clarion Hotel Helsinki Airport（赫尔辛基机场 · 第2晚）</div>
           <div class="sc-meta">第2晚 · 市中心 · 含早</div>
         </div>
         <div class="sc-right">
-          <span class="badge badge-pending">待订</span>
+          <span class="badge badge-booked">已订</span>
         </div>
       </div>
     </div>
@@ -2155,7 +2187,7 @@
     <div class="day-header">
       <div class="day-date" style="background: var(--aurora);">
         <div class="month">AUG</div>
-        <div class="date">18</div>
+        <div class="date" data-date="8/18">18</div>
         <div class="weekday">周二</div>
       </div>
       <div class="day-title-area">
@@ -2168,12 +2200,12 @@
         <div class="transport-card">
           <div class="tc-icon">✈️</div>
           <div class="tc-body">
-            <div class="tc-times">19:30 <span class="tc-arrow">→</span> 20:40</div>
-            <div class="tc-meta"><span class="tc-route">Zhi · HEL 赫尔辛基 → LHR 伦敦</span> · BA6035 · 希思罗T3 · 含登机箱+托运</div>
+            <div class="tc-times">16:24 <span class="tc-arrow">→</span> 19:55</div>
+            <div class="tc-meta"><span class="tc-route">Zhi · HEL 赫尔辛基 → LHR 伦敦</span> · 经斯德哥尔摩中转1h55m · 含托运 · 携程</div>
           </div>
           <div class="tc-right">
-            <div class="tc-price">¥1212</div>
-            <span class="badge badge-pending">待订</span>
+            <div class="tc-price">¥830</div>
+            <span class="badge badge-booked">已订</span>
           </div>
         </div>
         <div class="transport-card">
@@ -2202,6 +2234,12 @@
     <div class="booked-list">
       <div class="booked-item">
         <div class="booked-icon">✈️</div>
+        <div class="booked-name">OSL→SVG 奥斯陆→斯塔万格</div>
+        <div class="booked-detail">8/6 20:20 · SAS SK4047 · 携程 · 托运23kg+手提8kg · ¥1772/2人</div>
+        <span class="booked-status status-confirmed">已订</span>
+      </div>
+      <div class="booked-item">
+        <div class="booked-icon">✈️</div>
         <div class="booked-name">妈妈机票 PVG→HEL→OSL（去程）</div>
         <div class="booked-detail">HO1607 + AY915 · 8/5 16:35落地奥斯陆 · 仅计去程¥13674(往返¥27349·回程算在别处)</div>
         <span class="booked-status status-confirmed">已订</span>
@@ -2221,13 +2259,13 @@
       <div class="booked-item">
         <div class="booked-icon">🚌</div>
         <div class="booked-name">精灵之路+巨魔之墙团</div>
-        <div class="booked-detail">8/13 08:30 · Viator · £238.88</div>
+        <div class="booked-detail">8/13 08:30 · Travel North · Skateflukaia码头集合(蓝夹克+工牌) · £238.88 · 24h免费取消</div>
         <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚢</div>
         <div class="booked-name">盖朗厄尔+老鹰之路团</div>
-        <div class="booked-detail">8/14 09:00 · GYG32L5RX6YZ · $379.04</div>
+        <div class="booked-detail">8/14 09:00 · Rådhuskaia码头·MS Bruvik · GYG32L5RX6YZ · £282.68</div>
         <span class="booked-status status-confirmed">已订</span>
       </div>
     </div>
@@ -2237,106 +2275,106 @@
     <div class="booked-header" style="background:#b45309;">🔴 待订</div>
     <div class="booked-list">
       <div class="booked-item">
+        <div class="booked-icon">🥾</div>
+        <div class="booked-name">布道台跟团 Get Guided Norway</div>
+        <div class="booked-detail">8/7 10:00 · 2人 · 含Clarion Hotel Air接送 · NOK 3,311.44 · 24h免费取消</div>
+        <span class="booked-status status-confirmed">已订</span>
+      </div>
+      <div class="booked-item">
         <div class="booked-icon">🚌</div>
         <div class="booked-name">沃斯→古德旺根大巴</div>
         <div class="booked-detail">8/10 09:50 · 2人 · NOK 400 · norwaysbest.com</div>
-        <span class="booked-status status-todo">待订</span>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚢</div>
         <div class="booked-name">古德旺根→弗洛姆纳柔依游船</div>
         <div class="booked-detail">8/10 13:15 · 2人 · NOK 1,330 · norwaysbest.com</div>
-        <span class="booked-status status-todo">待订</span>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">✈️</div>
         <div class="booked-name">Zhi LHR→OSL</div>
-        <div class="booked-detail">8/5 15:35 · SAS SK806 · 希思罗T2 · 含托运 · ¥1467</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/5 15:05 LGW · Norwegian · 含托运 · ¥1296 · 携程 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">✈️</div>
-        <div class="booked-name">OSL→SVG 奥斯陆→斯塔万格</div>
-        <div class="booked-detail">8/6 20:20 · SAS · $122/人</div>
-        <span class="booked-status status-todo">待订</span>
-      </div>
-      <div class="booked-item">
-        <div class="booked-icon">✈️</div>
-        <div class="booked-name">AES→HEL 奥勒松→赫尔辛基</div>
-        <div class="booked-detail">8/16 14:45 · SAS · 经哥本哈根 · 含手提+1托运 · ¥1910/人 · 携程</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-name">MOL→OSL→HEL 莫尔德→赫尔辛基</div>
+        <div class="booked-detail">8/16 Norwegian DY423 15:10 MOL→OSL NOK2380 + Finnair AY918 20:30 OSL→HEL NOK3784 · 合计NOK6164/2人 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">✈️</div>
         <div class="booked-name">Zhi HEL→LHR</div>
-        <div class="booked-detail">8/18 19:30 · BA6035 · 希思罗T3 · 含登机箱+托运 · ¥1212</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/18 16:24→19:55 · 经斯德哥尔摩 · 含托运 · ¥830 · 携程 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚂</div>
         <div class="booked-name">卑尔根→沃斯火车</div>
-        <div class="booked-detail">8/10 07:04 · R40 · vy.no · NOK 1,112（2人）</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/10 07:04-08:18 · R40 · vy.no · NOK 556（2人）</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚂</div>
         <div class="booked-name">弗洛姆→卑尔根（含小火车）</div>
-        <div class="booked-detail">8/10 17:10 · R45+R40 · vy.no · NOK 1,834（2人）</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/10 17:10-21:15 · R45+R40 · vy.no · NOK 1,834（2人）</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚗</div>
-        <div class="booked-name">租车① 斯塔万格机场取/Bergen Centrum还</div>
-        <div class="booked-detail">8/7 8:00–8/9 20:00 · Toyota Corolla Cross 4x4中型SUV · $1169含保险(价格回伦敦再定) · 无限里程 · 含单程费 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-name">租车① 斯塔万格机场取/Bergen Flesland机场还</div>
+        <div class="booked-detail">8/8 8:00–8/9 21:00 · Sixt Volvo EX40 4WD电动 · NOK 8,594.69 · 到店付 · 全含保险无excess · 无限里程 · 取车前免费取消 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🚗</div>
         <div class="booked-name">租车② 奥勒松取/Vigra机场还</div>
-        <div class="booked-detail">8/15市区取-8/16 Vigra机场还 · 过夜(住莫尔德) · Avis Volvo XC60 燃油SUV · $401.99 · 含保护 · 无限里程 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/15 11:00市区Nedre Strandgt 50取 · 8/16 11:00 Vigra机场还(after-hours key drop) · Avis Large自动燃油 · £130.81 · 满油取还 · 柜台加Super CDW · 免费取消 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
         <div class="booked-name">Radisson RED Oslo Airport（1晚）</div>
-        <div class="booked-detail">8/5 · ¥1370 · 携程 · 含早餐 · 退房12:00 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/5 · ¥1441.42 · 携程 · 含早餐 · 8/5前可取消 · 退房12:00 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
         <div class="booked-name">Clarion Hotel Air 斯塔万格（2晚）</div>
-        <div class="booked-detail">8/6–8/7 · £190.94 · Expedia · 含早餐 · 退房12:00 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/6–8/8 · £203.65 · Expedia · 含早餐 · 退房12:00 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
         <div class="booked-name">Vøringfoss Hotel 埃德峡湾（1晚）</div>
-        <div class="booked-detail">8/8 · £173.14 · Expedia · 含早餐 · 临峡湾 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/8 · £162.84 · Expedia · 含早餐 · 临峡湾 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
         <div class="booked-name">Scandic Ørnen 卑尔根（2晚）</div>
-        <div class="booked-detail">8/9–8/11 · ¥2796 · 携程 · 含早餐 · 市中心离火车站近 · Expedia比价£312.87 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/9–8/11 · Expedia · £281.49 · 不含早(8/11到店加1天早餐450NOK) · 市中心离火车站近 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
         <div class="booked-name">Scandic Parken 奥勒松（3晚）</div>
-        <div class="booked-detail">8/12-14 · £651.30 · 含早 · 市中心 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-detail">8/12-14 · £613.75 · 含早 · 市中心 · Storgata 16 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
-        <div class="booked-name">Scandic Seilet 莫尔德（1晚）</div>
-        <div class="booked-detail">8/15 · £104.67 · 含早 · 帆船地标·峡湾景 · 现场停车 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-name">Molde Fjordhotell 莫尔德（1晚）</div>
+        <div class="booked-detail">8/15 · £110.04 · 含早 · 免费停车 · EV充电桩 · 评分9.2 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
       <div class="booked-item">
         <div class="booked-icon">🏨</div>
-        <div class="booked-name">Marski by Scandic 赫尔辛基（2晚）</div>
-        <div class="booked-detail">8/16-18 · £254 · 含早 · 市中心近中央车站 · 🧖免费桑拿 · 已选好待下单</div>
-        <span class="booked-status status-todo">待订</span>
+        <div class="booked-name">Clarion Hotel Helsinki Airport 赫尔辛基（2晚）</div>
+        <div class="booked-detail">8/16-18 · ¥2134.17 · 携程 · 含早 · 机场室内通道直达 · 🧖Elements Spa(桑拿+蒸汽房+户外按摩池·€12/人) · 8/13前可修改 · 已订</div>
+        <span class="booked-status status-confirmed">已订</span>
       </div>
     </div>
   </div>
@@ -2345,5 +2383,97 @@
 
 <div class="footer">挪威 + 赫尔辛基行程 · 8/5–8/18/2026 · 2人</div>
 
+<script>
+(function(){
+  // 天气数据
+  const weather = {
+    "8/5":  {icon:"🌧️", temp:"15-19°C", desc:"大雨转小雨·17mm", link:"https://www.yr.no/en/forecast/daily-table/1-72837/Norway/Oslo/Oslo/Oslo"},
+    "8/6":  {icon:"⛅", temp:"16-22°C", desc:"多云·午后阵雨", link:"https://www.yr.no/en/forecast/daily-table/1-72837/Norway/Oslo/Oslo/Oslo"},
+    "8/7":  {icon:"🌤️", temp:"13-19°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-211102/Norway/Rogaland/Stavanger/Stavanger"},
+    "8/8":  {icon:"⛅", temp:"10-18°C", desc:"多云·偶阵雨", link:"https://www.yr.no/en/forecast/daily-table/1-211102/Norway/Rogaland/Stavanger/Stavanger"},
+    "8/9":  {icon:"🌦️", temp:"12-17°C", desc:"阵雨", link:"https://www.yr.no/en/forecast/daily-table/1-92416/Norway/Vestland/Bergen/Bergen"},
+    "8/10": {icon:"⛅", temp:"13-18°C", desc:"多云·局部雨", link:"https://www.yr.no/en/forecast/daily-table/1-92416/Norway/Vestland/Bergen/Bergen"},
+    "8/11": {icon:"🌤️", temp:"13-18°C", desc:"多云转晴", link:"https://www.yr.no/en/forecast/daily-table/1-92416/Norway/Vestland/Bergen/Bergen"},
+    "8/12": {icon:"⛅", temp:"12-16°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-1502316/Norway/M%C3%B8re%20og%20Romsdal/%C3%85lesund/%C3%85lesund"},
+    "8/13": {icon:"🌤️", temp:"12-17°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-1502316/Norway/M%C3%B8re%20og%20Romsdal/%C3%85lesund/%C3%85lesund"},
+    "8/14": {icon:"⛅", temp:"12-16°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-1502316/Norway/M%C3%B8re%20og%20Romsdal/%C3%85lesund/%C3%85lesund"},
+    "8/15": {icon:"🌤️", temp:"12-17°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-1498553/Norway/M%C3%B8re%20og%20Romsdal/Molde/Molde"},
+    "8/16": {icon:"⛅", temp:"12-16°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-1498553/Norway/M%C3%B8re%20og%20Romsdal/Molde/Molde"},
+    "8/17": {icon:"🌤️", temp:"14-22°C", desc:"晴到多云", link:"https://www.yr.no/en/forecast/daily-table/1-658225/Finland/Uusimaa/Helsinki/Helsinki"},
+    "8/18": {icon:"⛅", temp:"13-21°C", desc:"多云", link:"https://www.yr.no/en/forecast/daily-table/1-658225/Finland/Uusimaa/Helsinki/Helsinki"},
+  };
+
+  const now = new Date();
+  const todayStr = (now.getMonth()+1) + "/" + now.getDate();
+  let todayCard = null;
+  let nearestCard = null;
+
+  // 找所有 day-card
+  document.querySelectorAll('.day-card').forEach(card => {
+    const dateDiv = card.querySelector('.date[data-date]');
+    if (!dateDiv) return;
+    const dateStr = dateDiv.getAttribute('data-date');
+    const [m, d] = dateStr.split('/').map(Number);
+    const cardDate = new Date(2026, m-1, d);
+    const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    // 今日高亮
+    if (dateStr === todayStr) {
+      card.classList.add('is-today');
+      const titleArea = card.querySelector('.day-title-area');
+      if (titleArea) {
+        const tag = document.createElement('span');
+        tag.className = 'today-tag';
+        tag.textContent = '📍 今天';
+        titleArea.appendChild(tag);
+      }
+      todayCard = card;
+    }
+
+    // 过去的天半透明
+    if (cardDate < todayDate) {
+      card.classList.add('is-past');
+    }
+
+    // 最近的未来一天
+    if (!nearestCard && cardDate >= todayDate) {
+      nearestCard = card;
+    }
+
+    // 加天气徽章
+    const w = weather[dateStr];
+    if (w) {
+      const titleArea = card.querySelector('.day-title-area');
+      if (titleArea) {
+        const badge = document.createElement('a');
+        badge.className = 'weather-badge';
+        badge.href = w.link;
+        badge.target = '_blank';
+        badge.rel = 'noopener noreferrer';
+        badge.title = '点击查看yr.no实时天气';
+        badge.innerHTML = '<span class="w-icon">' + w.icon + '</span><span class="w-temp">' + w.temp + '</span><span class="w-desc">' + w.desc + '</span>';
+        titleArea.appendChild(badge);
+      }
+    }
+  });
+
+  // 自动滚动到今天(或最近的未来一天)
+  const scrollTarget = todayCard || nearestCard;
+  if (scrollTarget) {
+    setTimeout(() => {
+      scrollTarget.scrollIntoView({ behavior:'smooth', block:'start' });
+    }, 500);
+  }
+
+  // 浮动"跳到今天"按钮
+  if (scrollTarget) {
+    const btn = document.createElement('button');
+    btn.className = 'jump-today';
+    btn.innerHTML = '📍 跳到今天';
+    btn.onclick = () => scrollTarget.scrollIntoView({ behavior:'smooth', block:'start' });
+    document.body.appendChild(btn);
+  }
+})();
+</script>
 </body>
 </html>
