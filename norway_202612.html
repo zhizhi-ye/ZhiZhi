@@ -131,6 +131,7 @@
     display: grid; grid-template-columns: 48px repeat(9, 1fr);
     background: var(--header-bg); border-bottom: 1px solid var(--border);
     min-width: 700px; width: 100%;
+    position: sticky; top: 0; z-index: 15;
   }
   .plan-a .grid-container {
     display: grid; grid-template-columns: 48px repeat(9, 1fr);
@@ -141,8 +142,20 @@
     display: grid; grid-template-columns: 48px repeat(8, 1fr);
     background: var(--header-bg); border-bottom: 1px solid var(--border);
     min-width: 700px; width: 100%;
+    position: sticky; top: 0; z-index: 15;
   }
   .plan-b .grid-container {
+    display: grid; grid-template-columns: 48px repeat(8, 1fr);
+    position: relative; min-width: 700px; width: 100%;
+  }
+  /* Plan C grid: 8 days */
+  .plan-c .day-headers {
+    display: grid; grid-template-columns: 48px repeat(8, 1fr);
+    background: var(--header-bg); border-bottom: 1px solid var(--border);
+    min-width: 700px; width: 100%;
+    position: sticky; top: 0; z-index: 15;
+  }
+  .plan-c .grid-container {
     display: grid; grid-template-columns: 48px repeat(8, 1fr);
     position: relative; min-width: 700px; width: 100%;
   }
@@ -380,6 +393,7 @@
 <div class="top-tabs">
   <button class="top-tab active" data-top="plana">Plan A (9天)</button>
   <button class="top-tab" data-top="planb">Plan B (8天)</button>
+  <button class="top-tab" data-top="planc">Plan C (8天)</button>
   <button class="top-tab" data-top="compare">对比</button>
 </div>
 
@@ -408,6 +422,7 @@
       <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div>酒店</div>
     </div>
     <div class="scroll-hint">← 左右滑动查看所有天数 →</div>
+    <div class="grid-body" id="gridBodyA">
     <div class="day-headers">
       <div class="day-header-spacer"></div>
       <div class="day-header"><span class="day-name">WED</span><span class="day-num">9</span><span class="location-tag">SVJ</span></div>
@@ -420,7 +435,6 @@
       <div class="day-header"><span class="day-name">WED</span><span class="day-num">16</span><span class="location-tag">TOS</span></div>
       <div class="day-header"><span class="day-name">THU</span><span class="day-num">17</span><span class="location-tag">TOS→LDN</span></div>
     </div>
-    <div class="grid-body" id="gridBodyA">
       <div class="grid-container" id="gridContainerA"></div>
     </div>
     <div class="budget-bar">
@@ -503,6 +517,7 @@
       <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div>酒店</div>
     </div>
     <div class="scroll-hint">← 左右滑动查看所有天数 →</div>
+    <div class="grid-body" id="gridBodyB">
     <div class="day-headers">
       <div class="day-header-spacer"></div>
       <div class="day-header"><span class="day-name">WED</span><span class="day-num">9</span><span class="location-tag">SVJ</span></div>
@@ -514,7 +529,6 @@
       <div class="day-header"><span class="day-name">TUE</span><span class="day-num">15</span><span class="location-tag">TOS</span></div>
       <div class="day-header"><span class="day-name">WED</span><span class="day-num">16</span><span class="location-tag">TOS→LDN</span></div>
     </div>
-    <div class="grid-body" id="gridBodyB">
       <div class="grid-container" id="gridContainerB"></div>
     </div>
     <div class="budget-bar">
@@ -563,6 +577,97 @@
           <span class="label total">酒店小计</span><span class="value total">¥18,342</span>
           <span class="label total">活动小计</span><span class="value total">~¥15,206</span>
           <span class="label total" style="font-size:15px">预估总计</span><span class="value total" style="font-size:15px">~¥42,033</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================= -->
+<!-- PLAN C -->
+<!-- ========================================================= -->
+<div class="top-panel" id="top-planc">
+  <div class="sub-tabs" data-group="c">
+    <button class="sub-tab active" data-sub="c-cal">日历</button>
+    <button class="sub-tab" data-sub="c-itin">行程</button>
+  </div>
+
+  <!-- Plan C Calendar -->
+  <div class="sub-panel active plan-c" id="sub-c-cal">
+    <div class="cal-header">
+      <h1>Norway Trip Dec 2026 <span class="plan-badge">PLAN C</span></h1>
+      <div class="subtitle">DEC 8 TUE -- DEC 15 TUE · Svolvær → Tromsø · 2人 from London · 12/8出发 Lofoten 4晚 + Tromsø 3晚</div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--flight)"></div>航班</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--tour)"></div>游览</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--reindeer)"></div>驯鹿</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--whale)"></div>观鲸</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--aurora)"></div>极光</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--free)"></div>自由</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--hotel)"></div>酒店</div>
+    </div>
+    <div class="scroll-hint">← 左右滑动查看所有天数 →</div>
+    <div class="grid-body" id="gridBodyC">
+    <div class="day-headers">
+      <div class="day-header-spacer"></div>
+      <div class="day-header"><span class="day-name">TUE</span><span class="day-num">8</span><span class="location-tag">SVJ</span></div>
+      <div class="day-header"><span class="day-name">WED</span><span class="day-num">9</span><span class="location-tag">SVJ</span></div>
+      <div class="day-header"><span class="day-name">THU</span><span class="day-num">10</span><span class="location-tag">SVJ</span></div>
+      <div class="day-header"><span class="day-name">FRI</span><span class="day-num">11</span><span class="location-tag">SVJ</span></div>
+      <div class="day-header"><span class="day-name">SAT</span><span class="day-num">12</span><span class="location-tag">SVJ→TOS</span></div>
+      <div class="day-header"><span class="day-name">SUN</span><span class="day-num">13</span><span class="location-tag">TOS</span></div>
+      <div class="day-header"><span class="day-name">MON</span><span class="day-num">14</span><span class="location-tag">TOS</span></div>
+      <div class="day-header"><span class="day-name">TUE</span><span class="day-num">15</span><span class="location-tag">TOS→LDN</span></div>
+    </div>
+      <div class="grid-container" id="gridContainerC"></div>
+    </div>
+    <div class="budget-bar">
+      <div class="budget-item"><span class="budget-label">机票</span><span class="budget-value">~¥6,829</span></div>
+      <div class="budget-item"><span class="budget-label">酒店</span><span class="budget-value">¥17,579</span></div>
+      <div class="budget-item"><span class="budget-label">活动</span><span class="budget-value">~¥15,206</span></div>
+      <div class="budget-item" style="margin-left:auto"><span class="budget-label">预估总计</span><span class="budget-value" style="color:var(--flight-fg)">~¥39,614</span></div>
+    </div>
+  </div>
+
+  <!-- Plan C Itinerary -->
+  <div class="sub-panel" id="sub-c-itin">
+    <div class="itinerary">
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/8 Tue</span><span class="day-location transit">London → Svolvær</span><span class="day-hotel">Thon Hotel Lofoten (1/4晚)</span></div><div class="activity-row"><div class="activity-time">10:35</div><div class="activity-body"><div class="activity-name">✈ LHR → SVJ <span class="activity-tag tag-flight">Flight</span></div><div class="activity-detail">SAS + Widerøe 联程，3段航班（飞行4h15m + 中转4h50m = 全程10h05m）<br>🚇 E16 出发：Elizabeth Line → Heathrow，约50分钟，建议 08:00 前到机场</div><div class="transit-step"><strong>10:35</strong> London Heathrow (LHR)<br>↓ SK804 · SAS · A320NEO · 2h15m<br><strong>13:50</strong> Oslo Gardermoen (OSL)<br><span style="opacity:.7">中转等待 3h45m</span><br><strong>17:35</strong> Oslo Gardermoen (OSL)<br>↓ SK4122 · SAS · A320NEO · 1h35m<br><strong>19:10</strong> Bodø (BOO)<br><span style="opacity:.7">中转等待 1h05m</span><br><strong>20:15</strong> Bodø (BOO)<br>↓ WF836 · Widerøe · DHC-8 100 · 25m<br><strong>20:40</strong> Svolvær (SVJ)</div><div class="activity-detail">Expedia 预订 · $233.80/人 · Economy</div></div><div class="activity-price">$233.80/人<br>~¥3,404总</div></div><div class="activity-row"><div class="activity-time">~21:00</div><div class="activity-body"><div class="activity-name">入住 Thon Hotel Lofoten <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">Torget (港口广场), Svolvær · 4晚 12/8–12<br>🚕 SVJ 机场 → Thon Hotel Lofoten：出租车约10分钟（6km），无公共交通<br>建议提前预约出租车（Svolvær Taxi: +47 76 07 00 00）</div></div><div class="activity-price">£773.02<br>~¥7,525<br><span style="font-size:10px;opacity:.7">4晚总价</span></div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/9 Wed</span><span class="day-location svj">Svolvær · Lofoten</span></div><div class="activity-row"><div class="activity-time">白天</div><div class="activity-body"><div class="activity-name">自由活动 <span class="activity-tag tag-free">Free</span></div><div class="activity-detail">到达第二天，先适应节奏：<br>🧊 <strong>Magic Ice Bar</strong> — 冰雕酒吧<br>🎨 <strong>Galleri Dagfinn Bakke</strong> — 罗弗敦风景画廊<br>🏔 <strong>Svinøya</strong> — 小岛渔村步行可到<br>🎣 <strong>港口散步</strong> — 鳕鱼干晒架<br>☕ <strong>Kaffistova</strong> — 热巧克力 + 肉桂卷</div></div><div class="activity-price"></div></div><div class="activity-row"><div class="activity-time">~18:00–23:00</div><div class="activity-body"><div class="activity-name">罗弗敦极光团 <span class="activity-tag tag-aurora">Aurora</span></div><div class="activity-detail">Pickup: Svolvær 镇中心（具体集合点待确认）<br>🚶 预计从 Thon Hotel Lofoten 步行 5–10分钟<br>约5小时追极光</div><div class="activity-detail" style="margin-top:6px"><strong>极光团详情：</strong><br>🚐 向导开车离开城镇光污染区，根据天气和极光预报选最佳观测点<br>📸 通常配专业摄影师拍极光人像（含在团费）<br>☕ 提供热巧克力/咖啡和小食<br>💡 罗弗敦光污染极低，概率比大城市高；天气是最大变数</div><div class="activity-detail" style="margin-top:4px">待选：Unique Norway €168/人 或 Raido 1,650 NOK/人</div></div><div class="activity-price">~€168/人<br>~£290</div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/10 Thu</span><span class="day-location svj">Svolvær · Lofoten</span></div><div class="activity-row"><div class="activity-time">09:00–15:00</div><div class="activity-body"><div class="activity-name">罗弗敦北线半日游 <span class="activity-tag tag-tour">Tour</span></div><div class="activity-detail">Pickup: Scandic Svolvær 或 Thon Hotel Lofoten（可选接送点）<br>🚶 Thon Hotel Lofoten 门口上车，或步行到 Scandic 约5分钟<br>路线：Henningsvær 渔村 → Lofotr Viking Museum<br>约6小时</div><div class="activity-detail" style="margin-top:6px"><strong>途经亮点：</strong><br>🎨 <strong>Henningsvær</strong> — "罗弗敦的威尼斯"，彩色木屋散布在窄桥连接的小岛群上；冬天游客少，安静逛画廊咖啡馆；岛尖足球场是知名打卡点<br>⚔ <strong>Lofotr Viking Museum</strong> — 1:1 复原维京酋长长屋（83米！），冬季可体验射箭<br>🏔 <strong>沿途风景</strong> — Gimsøystraumen 大桥、Kabelvåg 小镇</div><div class="activity-detail" style="margin-top:4px">Guide to Lofoten £120/人</div></div><div class="activity-price">£120/人<br>£240</div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/11 Fri</span><span class="day-location svj">Svolvær · Lofoten</span></div><div class="activity-row"><div class="activity-time">08:30–17:00</div><div class="activity-body"><div class="activity-name">罗弗敦南线一日游 <span class="activity-tag tag-tour">Tour</span></div><div class="activity-detail">08:30 出发<br>Pickup: Thon Hotel Svolvær 门口<br>🚶 从 Thon Hotel Lofoten 步行约5分钟（沿港口往南）<br>路线：Haukland Beach → Nusfjord → Reine → Å 渔村<br>约8.5小时，含午餐时间</div><div class="activity-detail" style="margin-top:6px"><strong>途经亮点：</strong><br>🏖 <strong>Haukland Beach</strong> — 弧形白沙滩，两侧尖峰环抱，冬天积雪覆盖沙滩配深蓝海水，罗弗敦经典机位<br>🏘 <strong>Nusfjord</strong> — UNESCO 世界遗产候选地，保存最完好的渔村之一；红色渔棚沿峡湾排列<br>🏘 <strong>Reine</strong> — "挪威最上镜渔村"，红色 rorbuer 倒映在平静港湾，四围雪山<br>🌊 <strong>Ramberg Beach</strong> — 开阔的弧形海滩，冬天常有北极光倒映海面<br>🐟 <strong>Å i Lofoten</strong> — E10 公路的尽头，19世纪渔业社区原貌；渔村博物馆 + 鱼干博物馆<br>💡 12月日照极短（~11:00–13:30 有微光），全程"蓝色极夜"氛围</div><div class="activity-detail" style="margin-top:4px">待选：中文导游 ¥1,496/人 或 Guide to Lofoten £155/人</div></div><div class="activity-price">~£155/人<br>~£310</div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/12 Sat</span><span class="day-location transit">Svolvær → Tromsø</span><span class="day-hotel">Radisson Blu (1/2晚)</span></div><div class="activity-row"><div class="activity-time">~09:00</div><div class="activity-body"><div class="activity-name">退房 Thon Hotel Lofoten <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">打包行李，退房<br>🚕 Thon Hotel Lofoten → SVJ 机场：出租车约10分钟（6km）<br>建议 10:00 前到机场</div></div><div class="activity-price"></div></div><div class="activity-row"><div class="activity-time">11:40</div><div class="activity-body"><div class="activity-name">✈ SVJ → TOS 直飞 <span class="activity-tag tag-flight">Flight</span></div><div class="activity-detail">Widerøe WF824 · DHC-8 100 · 直飞50分钟</div><div class="transit-step"><strong>11:40</strong> Helle / Svolvær (SVJ)<br>↓ WF824 · Widerøe · DHC-8 100 · 50m<br><strong>12:30</strong> Langnes / Tromsø (TOS)</div></div><div class="activity-price">¥2,411<br><span style="font-size:10px;opacity:.7">2人总价</span></div></div><div class="activity-row"><div class="activity-time">~13:00</div><div class="activity-body"><div class="activity-name">入住 Radisson Blu + 自由活动 <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">🚌 TOS 机场 → 市中心：Flybussen 机场大巴约15分钟（~130 NOK/人）<br>Radisson Blu Hotel Tromsø · 2晚 12/12–14<br>下午 Tromsø 市区自由逛：<br>⛪ <strong>北极大教堂</strong>（Ishavskatedralen）— 跨 Tromsø 大桥到对岸，三角形标志建筑<br>🚡 <strong>Fjellheisen 缆车</strong> — 山顶俯瞰 Tromsø 全城 + 峡湾雪山<br>🐟 <strong>Polaria</strong> — 北极体验中心 + 海洋馆<br>🍺 <strong>Mack Ølhallen</strong> — 世界最北啤酒厂品尝精酿</div></div><div class="activity-price">¥7,478<br><span style="font-size:10px;opacity:.7">Radisson 2晚</span></div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/13 Sun</span><span class="day-location tos">Tromsø</span></div><div class="activity-row"><div class="activity-time">10:00–14:00</div><div class="activity-body"><div class="activity-name">驯鹿雪橇 + 萨米文化 <span class="activity-tag tag-reindeer">Reindeer</span></div><div class="activity-detail">10:00 出发<br>集合点：Tromsø Havn Prostneset 公交站<br>Samuel Arnesens gate 5<br>🚶 从 Radisson Blu 步行约5分钟</div><div class="activity-detail" style="margin-top:6px"><strong>体验内容（约4小时）：</strong><br>🚐 巴士30分钟到营地（Tromsø 郊外雪原）<br>🦌 <strong>驯鹿雪橇</strong> — 雪橇由驯鹿拉着滑行，速度缓慢适合拍照；可以亲手喂食<br>⛺ <strong>Lavvu 帐篷</strong> — 萨米传统帐篷围坐篝火 + joik 吟唱<br>🍲 <strong>含午餐</strong> — bidos 驯鹿肉炖菜<br>👕 穿暖！保暖内衣 + 抓绒 + 防风外套 + 雪地靴 + 手套帽子</div></div><div class="activity-price">£328.60<br><span style="font-size:10px;opacity:.7">2人总价</span></div></div><div class="activity-row"><div class="activity-time">~17:30–23:30</div><div class="activity-body"><div class="activity-name">Tromsø 极光追光 <span class="activity-tag tag-aurora">Aurora</span></div><div class="activity-detail">Expert Guides + Photos<br>17:30–18:30 出发，约6小时<br>集合点：Tromsø Havn Prostneset 公交站<br>🚶 从 Radisson Blu 步行约5分钟</div><div class="activity-detail" style="margin-top:6px">🚐 向导根据极光预报和云图选最佳观测点<br>📸 含专业极光摄影<br>☕ 途中提供热饮和小食</div></div><div class="activity-price">£188.68<br><span style="font-size:10px;opacity:.7">2人总价</span></div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/14 Mon</span><span class="day-location tos">Tromsø</span><span class="day-hotel">Moxy (1/1晚)</span></div><div class="activity-row"><div class="activity-time">~08:30</div><div class="activity-body"><div class="activity-name">退房 Radisson Blu <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">退房 Radisson Blu（2/2晚），行李寄存前台<br>🚶 Radisson Blu → Moxy Tromsø：步行约10分钟（800m），沿 Storgata 主街直走</div></div><div class="activity-price"></div></div><div class="activity-row"><div class="activity-time">09:00–17:00</div><div class="activity-body"><div class="activity-name">观鲸游船 <span class="activity-tag tag-whale">Whale</span></div><div class="activity-detail">09:00 出海<br>集合点：Nerstranda Shopping Centre 港口<br>🚶 从 Radisson Blu 步行约5分钟<br>虎鲸 + 座头鲸，约8小时</div><div class="activity-detail" style="margin-top:6px"><strong>观鲸详情：</strong><br>🐋 12月鲱鱼洄游高峰，最佳观赏月份之一<br>🚢 双体船有室内加热休息室 + 全景窗 + 户外甲板<br>🤢 提前吃晕船药！<br>🧥 穿最厚的衣服 — 海上风大体感极冷<br>🍱 自带午餐，船上有热饮</div></div><div class="activity-price">£296.54<br><span style="font-size:10px;opacity:.7">2人总价</span></div></div><div class="activity-row"><div class="activity-time">~17:30</div><div class="activity-body"><div class="activity-name">入住 Moxy Tromsø + 晚餐 <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">观鲸归来，入住 Moxy Tromsø · 1晚 12/14–15<br>🍽 晚餐推荐：Fiskekompaniet / Mathallen Tromsø</div></div><div class="activity-price">¥2,576<br><span style="font-size:10px;opacity:.7">Moxy 1晚</span></div></div></div>
+
+      <div class="day-card"><div class="day-card-header"><span class="day-date">12/15 Tue</span><span class="day-location transit">Tromsø → London</span></div><div class="activity-row"><div class="activity-time">~10:00</div><div class="activity-body"><div class="activity-name">退房 Moxy <span class="activity-tag tag-hotel">Hotel</span></div><div class="activity-detail">退房，行李可寄存。上午最后逛逛市区<br>🚌 Moxy → TOS 机场：Flybussen 约15分钟，建议 12:00 出发去机场</div></div><div class="activity-price"></div></div><div class="activity-row"><div class="activity-time">14:25</div><div class="activity-body"><div class="activity-name">✈ TOS → OSL → LHR <span class="activity-tag tag-flight">Flight</span></div><div class="activity-detail">经 Oslo 转机回伦敦<br>1人带行李 ¥554 + 1人不带 ¥460</div><div class="transit-step"><strong>14:25</strong> Tromsø (TOS)<br>↓ 飞往 Oslo<br><strong>到达</strong> Oslo Gardermoen (OSL)<br><span style="opacity:.7">中转等待 3h40m</span><br><strong>20:10</strong> Oslo Gardermoen (OSL)<br>↓ 飞往 London<br><strong>21:35</strong> London Heathrow (LHR)</div></div><div class="activity-price">¥1,014总<br><span style="font-size:10px;opacity:.7">460+554</span></div></div></div>
+
+      <div class="budget-summary">
+        <h3>预算汇总（2人）· Plan C</h3>
+        <div class="budget-grid">
+          <span class="label">✈ LHR→SVJ 联程 (2人)</span><span class="value">~¥3,404</span>
+          <span class="label">✈ SVJ→TOS WF824 直飞</span><span class="value">¥2,411</span>
+          <span class="label">✈ TOS→OSL→LHR 经Oslo转</span><span class="value">¥1,014</span>
+          <span class="label">Thon Hotel Lofoten 4晚 (8–12)</span><span class="value">¥7,525</span>
+          <span class="label">Radisson Blu 2晚 (12–14)</span><span class="value">¥7,478</span>
+          <span class="label">Moxy Tromsø 1晚 (14–15)</span><span class="value">¥2,576</span>
+          <span class="label">罗弗敦极光 ×2人</span><span class="value">~£290</span>
+          <span class="label">北线半日游 ×2人</span><span class="value">~£240</span>
+          <span class="label">南线一日游 ×2人</span><span class="value">~£310</span>
+          <span class="label">驯鹿雪橇 ×2人</span><span class="value">£329</span>
+          <span class="label">观鲸 ×2人</span><span class="value">£297</span>
+          <span class="label">Tromsø 极光追光 ×2人</span><span class="value">£189</span>
+          <span class="label total">机票小计</span><span class="value total">~¥6,829</span>
+          <span class="label total">酒店小计</span><span class="value total">¥17,579</span>
+          <span class="label total">活动小计</span><span class="value total">~¥15,206</span>
+          <span class="label total" style="font-size:15px">预估总计</span><span class="value total" style="font-size:15px">~¥39,614</span>
         </div>
       </div>
     </div>
@@ -710,26 +815,91 @@
     </div>
     <div class="ov-total">✈ ¥8,485 &nbsp;+&nbsp; 🏨 ¥18,342 &nbsp;+&nbsp; 🎫 ¥15,206 &nbsp;≈&nbsp; <strong>¥42,033</strong></div>
 
-    <!-- ===== 费用对比 ===== -->
-    <h2>Plan A vs Plan B 费用对比</h2>
+    <!-- ===== Plan C 日程总览 ===== -->
+    <h2 style="margin-top:32px">Plan C · 8天总览 <span style="font-size:13px;color:var(--fg-muted)">(12/8出发)</span></h2>
+    <div style="overflow-x:auto; margin-bottom:28px; -webkit-overflow-scrolling:touch">
+    <div class="overview-grid" style="display:grid; grid-template-columns:repeat(8, minmax(100px, 1fr)); gap:8px; min-width:800px; padding:4px 0">
+      <div class="ov-card">
+        <div class="ov-date">12/8 二</div>
+        <div class="ov-loc transit">LDN → SVJ</div>
+        <div class="ov-act">✈ 飞抵 SVJ<br><small>3段联程 10h</small></div>
+        <div class="ov-hotel">Thon Lofoten<br><small>1/4晚</small></div>
+        <div class="ov-price">✈ ¥3,404<br>🏨 ¥7,525 <small>(4晚)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/9 三</div>
+        <div class="ov-loc svj">Svolvær</div>
+        <div class="ov-act">🧊 白天自由<br>🌌 极光团<br><small>18:00–23:00</small></div>
+        <div class="ov-hotel">Thon Lofoten<br><small>2/4晚</small></div>
+        <div class="ov-price">🎫 ~£290 <small>(2人)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/10 四</div>
+        <div class="ov-loc svj">Svolvær</div>
+        <div class="ov-act">⚔ 北线半日游<br><small>09:00–15:00</small></div>
+        <div class="ov-hotel">Thon Lofoten<br><small>3/4晚</small></div>
+        <div class="ov-price">🎫 £240 <small>(2人)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/11 五</div>
+        <div class="ov-loc svj">Svolvær</div>
+        <div class="ov-act">🏔 南线一日游<br><small>08:30–17:00</small></div>
+        <div class="ov-hotel">Thon Lofoten<br><small>4/4晚</small></div>
+        <div class="ov-price">🎫 ~£310 <small>(2人)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/12 六</div>
+        <div class="ov-loc transit">SVJ → TOS</div>
+        <div class="ov-act">✈ SVJ→TOS<br><small>直飞 11:40</small><br>🏙 下午市区</div>
+        <div class="ov-hotel">Radisson Blu<br><small>1/2晚</small></div>
+        <div class="ov-price">✈ ¥2,411<br>🏨 ¥7,478 <small>(2晚)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/13 日</div>
+        <div class="ov-loc tos">Tromsø</div>
+        <div class="ov-act">🦌 驯鹿萨米<br>🌌 极光追光<br><small>10–14 / 17:30–</small></div>
+        <div class="ov-hotel">Radisson Blu<br><small>2/2晚</small></div>
+        <div class="ov-price">🎫 £329 <small>(2人)</small><br>🎫 £189 <small>(2人)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/14 一</div>
+        <div class="ov-loc tos">Tromsø</div>
+        <div class="ov-act">🐋 观鲸<br><small>09:00–17:00</small></div>
+        <div class="ov-hotel">Moxy<br><small>1/1晚</small></div>
+        <div class="ov-price">🎫 £297 <small>(2人)</small></div>
+      </div>
+      <div class="ov-card">
+        <div class="ov-date">12/15 二</div>
+        <div class="ov-loc transit">TOS → LDN</div>
+        <div class="ov-act">✈ TOS→OSL→LHR<br><small>14:25→21:35</small></div>
+        <div class="ov-hotel" style="color:var(--fg-muted)">—</div>
+        <div class="ov-price">✈ ¥1,014</div>
+      </div>
+    </div>
+    </div>
+    <div class="ov-total">✈ ~¥6,829 &nbsp;+&nbsp; 🏨 ¥17,579 &nbsp;+&nbsp; 🎫 ¥15,206 &nbsp;≈&nbsp; <strong>~¥39,614</strong></div>
+
+    <!-- ===== 费用对比 (3-way) ===== -->
+    <h2>Plan A / B / C 费用对比</h2>
     <div style="overflow-x:auto">
     <table class="cmp-table">
-      <thead><tr><th>项目</th><th>Plan A (9天)</th><th>Plan B (8天)</th><th>差异</th></tr></thead>
+      <thead><tr><th>项目</th><th>Plan A (9天)</th><th>Plan B (8天)</th><th>Plan C (8天)</th></tr></thead>
       <tbody>
-        <tr><td class="row-label">行程</td><td>12/9 – 12/17 (9天)</td><td>12/9 – 12/16 (8天)</td><td>B 少1天</td></tr>
-        <tr><td class="row-label">罗弗敦</td><td>4晚 (9–13)</td><td>3晚 (9–12)</td><td>B 少1晚</td></tr>
-        <tr><td class="row-label">Tromsø</td><td>4晚 (13–17)</td><td>4晚 (12–16)</td><td><span class="diff-same">同</span></td></tr>
-        <tr><td class="row-label">✈ LHR→SVJ</td><td class="mono">~¥3,780</td><td class="mono">~¥3,780</td><td><span class="diff-same">同</span></td></tr>
-        <tr><td class="row-label">✈ SVJ→TOS</td><td class="mono">¥3,220<br><span style="font-size:11px;color:var(--fg-muted)">经Bodø转机</span></td><td class="mono">¥2,411<br><span style="font-size:11px;color:var(--fg-muted)">直飞50min</span></td><td><span class="diff-save">B 省 ¥809</span></td></tr>
-        <tr><td class="row-label">✈ 回程</td><td class="mono">¥1,678<br><span style="font-size:11px;color:var(--fg-muted)">→Luton</span></td><td class="mono">¥2,294<br><span style="font-size:11px;color:var(--fg-muted)">→Heathrow</span></td><td><span class="diff-cost">B 贵 ¥616</span></td></tr>
-        <tr class="subtotal"><td>机票小计</td><td class="mono">~¥8,678</td><td class="mono">~¥8,485</td><td><span class="diff-save">B 省 ~¥193</span></td></tr>
-        <tr><td class="row-label">Thon Lofoten 3晚</td><td class="mono">¥5,644</td><td class="mono">¥5,644</td><td><span class="diff-same">同</span></td></tr>
-        <tr><td class="row-label">Thon Svolvær 1晚</td><td class="mono">¥2,402</td><td>✗</td><td><span class="diff-save">B 省 ¥2,402</span></td></tr>
-        <tr><td class="row-label">Thon Polar 2晚</td><td class="mono">¥4,533</td><td class="mono">¥4,913</td><td><span class="diff-cost">B 贵 ¥380</span></td></tr>
-        <tr><td class="row-label">Radisson Blu 2晚</td><td class="mono">¥7,787</td><td class="mono">¥7,785</td><td><span class="diff-same">同</span></td></tr>
-        <tr class="subtotal"><td>酒店小计</td><td class="mono">¥20,366</td><td class="mono">¥18,342</td><td><span class="diff-save">B 省 ¥2,024</span></td></tr>
-        <tr><td class="row-label">活动小计</td><td class="mono">~¥15,206</td><td class="mono">~¥15,206</td><td><span class="diff-same">同</span></td></tr>
-        <tr class="grand-total"><td>总计</td><td class="mono">~¥44,250</td><td class="mono">~¥42,033</td><td><span class="diff-save" style="font-size:13px">B 省 ~¥2,217</span></td></tr>
+        <tr><td class="row-label">行程</td><td>12/9 – 12/17</td><td>12/9 – 12/16</td><td>12/8 – 12/15</td></tr>
+        <tr><td class="row-label">罗弗敦</td><td>4晚 (9–13)<br><small>Lofoten 3 + Svolvær 1</small></td><td>3晚 (9–12)<br><small>Lofoten 3晚</small></td><td>4晚 (8–12)<br><small>Lofoten 4晚</small></td></tr>
+        <tr><td class="row-label">Tromsø</td><td>4晚 (13–17)</td><td>4晚 (12–16)</td><td>3晚 (12–15)</td></tr>
+        <tr><td class="row-label">✈ LHR→SVJ</td><td class="mono">~¥3,780<br><small>同航线</small></td><td class="mono">~¥3,780<br><small>同航线</small></td><td class="mono">~¥3,404<br><small>12/8 更便宜</small></td></tr>
+        <tr><td class="row-label">✈ SVJ→TOS</td><td class="mono">¥3,220<br><small>经Bodø转机</small></td><td class="mono">¥2,411<br><small>直飞50m</small></td><td class="mono">¥2,411<br><small>直飞50m</small></td></tr>
+        <tr><td class="row-label">✈ 回程</td><td class="mono">¥1,678<br><small>→Luton</small></td><td class="mono">¥2,294<br><small>→Heathrow</small></td><td class="mono">¥1,014<br><small>→OSL→LHR</small></td></tr>
+        <tr class="subtotal"><td>机票小计</td><td class="mono">~¥8,678</td><td class="mono">~¥8,485</td><td class="mono">~¥6,829</td></tr>
+        <tr><td class="row-label">Thon Lofoten</td><td class="mono">¥5,644<br><small>3晚 (9–12)</small></td><td class="mono">¥5,644<br><small>3晚 (9–12)</small></td><td class="mono">¥7,525<br><small>4晚 (8–12) Expedia</small></td></tr>
+        <tr><td class="row-label">Thon Svolvær</td><td class="mono">¥2,402<br><small>1晚 (12–13)</small></td><td>✗</td><td>✗</td></tr>
+        <tr><td class="row-label">Radisson Blu</td><td class="mono">¥7,787<br><small>2晚 (15–17)</small></td><td class="mono">¥7,785<br><small>2晚 (14–16)</small></td><td class="mono">¥7,478<br><small>2晚 (12–14)</small></td></tr>
+        <tr><td class="row-label">Thon Polar</td><td class="mono">¥4,533<br><small>2晚 (13–15)</small></td><td class="mono">¥4,913<br><small>2晚 (12–14)</small></td><td>✗</td></tr>
+        <tr><td class="row-label">Moxy</td><td>✗</td><td>✗</td><td class="mono">¥2,576<br><small>1晚 (14–15)</small></td></tr>
+        <tr class="subtotal"><td>酒店小计</td><td class="mono">¥20,366</td><td class="mono">¥18,342</td><td class="mono">¥17,579</td></tr>
+        <tr><td class="row-label">活动小计</td><td class="mono">~¥15,206</td><td class="mono">~¥15,206</td><td class="mono">~¥15,206</td></tr>
+        <tr class="grand-total"><td>总计</td><td class="mono">~¥44,250</td><td class="mono">~¥42,033</td><td class="mono">~¥39,614</td></tr>
       </tbody>
     </table>
     </div>
@@ -741,6 +911,18 @@
         <li><span class="highlight">SVJ→TOS 改直飞</span>：A 经 Bodø 转机 (18:30–20:25)，B 改 WF824 直飞 (11:40–12:30)，省 ¥809 + 早半天到</li>
         <li><span class="highlight">回程改 Heathrow</span>：贵 ¥616，但比 Luton 方便</li>
         <li><span class="highlight">代价</span>：北线+极光同天较累（白天6h + 晚上5h）</li>
+      </ol>
+    </div>
+
+    <div class="changes-section">
+      <h3>Plan C 亮点</h3>
+      <ol>
+        <li><span class="highlight">12/8 提前出发</span>：比 A/B 早一天飞，机票更便宜（¥3,404 vs ¥3,780）</li>
+        <li><span class="highlight">Lofoten 4晚</span>：Thon Lofoten 4晚（Expedia £773.02 ≈ ¥7,525），不换酒店</li>
+        <li><span class="highlight">活动节奏更松</span>：12/9 极光、12/10 北线、12/11 南线，每天一项主活动</li>
+        <li><span class="highlight">Tromsø 3晚</span>：Radisson Blu 2晚 (12/12–14) + Moxy 1晚 (14–15)，观鲸后换酒店</li>
+        <li><span class="highlight">回程经 Oslo</span>：TOS 14:25→OSL，中转3h40m，20:10→LHR 21:35</li>
+        <li><span class="highlight">全部可取消</span>：所有酒店均可免费取消（备选：Polar 1晚 ¥2,618 替代 Moxy ¥2,576）</li>
       </ol>
     </div>
   </div>
@@ -757,6 +939,7 @@
       document.getElementById('top-' + btn.dataset.top).classList.add('active');
       if (btn.dataset.top === 'plana') initCalendarA();
       if (btn.dataset.top === 'planb') initCalendarB();
+      if (btn.dataset.top === 'planc') initCalendarC();
     });
   });
 
@@ -768,6 +951,7 @@
       document.getElementById('sub-' + btn.dataset.sub).classList.add('active');
       if (btn.dataset.sub === 'a-cal') initCalendarA();
       if (btn.dataset.sub === 'b-cal') initCalendarB();
+      if (btn.dataset.sub === 'c-cal') initCalendarC();
     });
   });
 
@@ -909,6 +1093,49 @@
       cB = true;
     }
     setTimeout(function() { document.getElementById('gridBodyB').scrollTop = (8 - START_HOUR) * HOUR_H - 10; }, 50);
+  }
+
+  var cC = false;
+  function initCalendarC() {
+    if (!cC) {
+      var la = buildGrid('gridContainerC', 8);
+      var a = mkAdd(la, 8);
+      // Day 0 = 12/8 Tue: LHR→SVJ
+      a(0,10,35,13,50,'✈ LHR→OSL','flight','10:35–13:50','SK804 飞行2h15m');
+      a(0,13,50,17,35,'⏳ OSL中转','free','13:50–17:35','等3h45m');
+      a(0,17,35,19,10,'✈ OSL→BOO','flight','17:35–19:10','SK4122 飞行1h35m');
+      a(0,19,10,20,15,'⏳ BOO中转','free','19:10–20:15','等1h05m');
+      a(0,20,15,20,40,'✈ BOO→SVJ','flight','20:15–20:40','WF836 飞行25m');
+      a(0,21,0,22,0,'Thon Lofoten','hotel','~21:00','Check in 1/4晚');
+      // Day 1 = 12/9 Wed: 极光团
+      a(1,9,0,17,0,'自由活动','free','白天','Svolvær 探索');
+      a(1,18,0,23,0,'罗弗敦极光','aurora','~18:00–23:00','Svolvær');
+      // Day 2 = 12/10 Thu: 北线半日游
+      a(2,9,0,15,0,'北线半日游','tour','09:00–15:00','Henningsvær+Viking');
+      a(2,15,0,18,0,'自由活动','free','15:00–','Svolvær');
+      // Day 3 = 12/11 Fri: 南线一日游
+      a(3,8,30,17,0,'南线一日游','tour','08:30–17:00','Pickup Thon SVJ');
+      // Day 4 = 12/12 Sat: SVJ→TOS
+      a(4,9,0,10,30,'退房+去机场','hotel','退房','Taxi 10min');
+      a(4,11,40,12,30,'✈ SVJ→TOS','flight','11:40–12:30','WF824 直飞50m');
+      a(4,13,0,14,0,'入住Radisson Blu','hotel','~13:00','Check in 1/2晚');
+      a(4,14,0,18,0,'自由+市区','free','下午','Tromsø');
+      // Day 5 = 12/13 Sun: 驯鹿 + 极光
+      a(5,10,0,14,0,'驯鹿+萨米','reindeer','10:00–14:00','Prostneset');
+      a(5,14,30,17,0,'自由活动','free','14:30–17:00','Tromsø');
+      a(5,17,30,23,30,'极光追光','aurora','17:30–23:30','Prostneset');
+      // Day 6 = 12/14 Mon: 退房Radisson→观鲸→入住Moxy
+      a(6,8,0,9,0,'退房Radisson','hotel','退房','寄行李Radisson/Moxy');
+      a(6,9,0,17,0,'观鲸','whale','09:00–17:00','Nerstranda');
+      a(6,17,30,18,30,'入住Moxy','hotel','~17:30','Check in 1/1晚');
+      // Day 7 = 12/15 Tue: TOS→OSL→LHR
+      a(7,10,0,12,0,'退房Moxy','hotel','退房','Flybussen 15min');
+      a(7,14,25,16,10,'✈ TOS→OSL','flight','14:25–','飞Oslo');
+      a(7,16,10,20,10,'⏳ OSL中转','free','中转','等3h40m');
+      a(7,20,10,21,35,'✈ OSL→LHR','flight','20:10–21:35','到Heathrow');
+      cC = true;
+    }
+    setTimeout(function() { document.getElementById('gridBodyC').scrollTop = (8 - START_HOUR) * HOUR_H - 10; }, 50);
   }
 
   initCalendarA();
